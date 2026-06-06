@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NTEJLH8YGL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NTEJLH8YGL');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Al Shola Auto Spare Parts Dubai | Brake Pads, Shock Absorbers, Engine Oil, AC Parts UAE</title>
@@ -341,9 +349,11 @@
     /* ============ BRAND EMBLEM CARDS ============ */
     .brand-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
     .brand-card {
-      background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 16px 14px;
+      background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 16px;
       text-align:center; transition:.25s; position:relative; overflow:hidden;
     }
+    .brand-card .bc-row { display:flex; align-items:center; justify-content:center; gap:10px; }
+    .brand-card .bc-row .bc-name { font-size:1.02rem; }
     .brand-card::before { content:""; position:absolute; left:0; right:0; top:0; height:3px; background:var(--brandc, linear-gradient(90deg,var(--red),var(--orange))); transform:scaleX(0); transition:transform .3s ease; }
     .brand-card:hover { transform:translateY(-5px); box-shadow:0 18px 40px rgba(0,0,0,.10); border-color:transparent; }
     .brand-card:hover::before { transform:scaleX(1); }
@@ -431,8 +441,31 @@
 .cat-card-text { padding:22px 26px; display:flex; flex-direction:column; gap:8px; justify-content:center; }
 .cat-card-text h2 { margin:0; font-size:1.5rem; }
 .cat-card-text p { font-family:'Inter',sans-serif; color:var(--muted); font-size:.92rem; line-height:1.6; margin:0; max-width:62ch; }
-.cat-card-text .cg-count { align-self:flex-start; margin-top:4px; }
 .product-chip-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; }
+.cat-viewall-btn {
+  display:inline-flex; align-items:center; gap:7px; margin-top:14px; padding:10px 20px; border-radius:10px;
+  border:1px solid var(--line); background:#fff; font-family:'Barlow Condensed',sans-serif; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; font-size:.82rem; color:var(--ink); cursor:pointer; transition:.2s ease;
+}
+.cat-viewall-btn:hover { border-color:var(--red); color:var(--red); transform:translateY(-1px); }
+.cat-modal-overlay {
+  position:fixed; inset:0; background:rgba(20,16,14,.58); display:flex; align-items:center; justify-content:center;
+  z-index:999; padding:24px;
+}
+.cat-modal-overlay[hidden] { display:none; }
+.cat-modal {
+  background:#fff; border-radius:16px; max-width:760px; width:100%; max-height:82vh; overflow-y:auto;
+  padding:30px 28px; position:relative; box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+.cat-modal h3 { margin:0 0 18px; padding-right:42px; font-family:'Barlow Condensed',sans-serif; font-size:1.4rem; }
+.cat-modal-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; }
+.cat-modal-close {
+  position:absolute; top:16px; right:16px; width:36px; height:36px; border-radius:50%;
+  border:1px solid var(--line); background:#fff; font-size:1.4rem; line-height:1; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; color:var(--muted); transition:.2s ease;
+}
+.cat-modal-close:hover { background:var(--red); color:#fff; border-color:var(--red); }
+@media (max-width:640px){ .cat-modal{ padding:24px 20px; } .cat-modal-grid{ grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); } }
 .prod-chip {
   display:block; background:#fff; border:1px solid var(--line); border-radius:10px;
   padding:13px 16px; text-decoration:none; transition:.2s ease;
@@ -449,10 +482,6 @@
   .cat-card-text { padding:18px 20px 22px; }
   .product-chip-grid { grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); }
 }
-    .cat-group-head { display:flex; align-items:baseline; gap:14px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--line); flex-wrap:wrap; }
-    .cat-group-head h2 { font-size:clamp(1.5rem,2.6vw,2rem); font-weight:800; text-transform:uppercase; letter-spacing:.01em; margin:0; }
-    .cat-group-head .cg-ar { font-family:'Tahoma','Segoe UI',Arial,sans-serif; direction:rtl; font-size:1.05rem; color:var(--red); font-weight:600; }
-    .cat-group-head .cg-count { margin-left:auto; font-size:.74rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); background:#fff; border:1px solid var(--line); padding:5px 12px; border-radius:50px; }
 
     /* compact catalogue cards */
     #catalogue .pcard-media, #catalogue .pcard-icon { aspect-ratio:16/10; }
@@ -883,8 +912,8 @@
     </div>
     <div class="sec-head reveal" style="margin-bottom:8px; max-width:none;">
       <span class="eyebrow">Full Parts Catalogue</span>
-      <h2>101 Product Lines Across 13 Categories — Genuine &amp; Aftermarket</h2>
-      <p class="cat-intro">Al Shola Auto Spare Parts stocks 101 individual part lines across 13 categories — from engine oils and filters to brake systems, suspension, electrical, body parts and safety equipment — for Toyota, Nissan, Mitsubishi, Honda, Hyundai, and Kia in Dubai. Genuine OEM and quality aftermarket options in stock. Serving individual car owners, auto workshops, and exporters to African markets.</p>
+      <h2>Full Parts Catalogue — Genuine &amp; Aftermarket</h2>
+      <p class="cat-intro">Al Shola Auto Spare Parts stocks a wide range of part lines across multiple categories — from engine oils and filters to brake systems, suspension, electrical, body parts and safety equipment — for Toyota, Nissan, Mitsubishi, Honda, Hyundai, and Kia in Dubai. Genuine OEM and quality aftermarket options in stock. Serving individual car owners, auto workshops, and exporters to African markets.</p>
     </div>
     <div class="cat-controls reveal">
       <div class="cat-search">
@@ -895,6 +924,13 @@
     </div>
     <div id="catalogue"><!-- grouped catalogue filled by JS --></div>
     <p class="cat-empty" id="catEmpty" hidden>No parts match your search. <a href="https://wa.me/971552403959?text=I%20am%20looking%20for%20a%20specific%20part." target="_blank" rel="noopener">WhatsApp us</a> — we source on request.</p>
+      <div class="cat-modal-overlay" id="catModalOverlay" hidden>
+        <div class="cat-modal" id="catModal" role="dialog" aria-modal="true" aria-labelledby="catModalTitle">
+          <button type="button" class="cat-modal-close" id="catModalClose" aria-label="Close">&times;</button>
+          <h3 id="catModalTitle"></h3>
+          <div class="cat-modal-grid" id="catModalGrid"></div>
+        </div>
+      </div>
   </div>
 </section>
 
@@ -1391,8 +1427,10 @@ function brandBadge(b){
   const grid = document.getElementById('brandGrid');
   grid.innerHTML = BRANDS.map(b=>`
     <div class="brand-card" style="--brandc:${b.color}">
-      ${brandBadge(b)}
-      <div class="bc-name bc-mark">${b.name}</div>
+      <div class="bc-row">
+        ${brandBadge(b)}
+        <div class="bc-name bc-mark">${b.name}</div>
+      </div>
     </div>`).join('');
 })();
 
@@ -1408,31 +1446,64 @@ const PRODUCTS = [{"cat": "engine-oils-lubricants-fluids", "name": "All Types of
   const emptyEl = document.getElementById('catEmpty');
   const catOf = id => CATS.find(c=>c.id===id);
 
-  function chipHTML(p){
+  const FAST_LIMIT = 6;
+
+  function chipHTML(p, extra){
     const cat = catOf(p.cat);
     const dataName = (p.name + ' ' + cat.name).toLowerCase();
-    return `<a class="prod-chip" href="${p.slug}" data-name="${dataName}" title="${p.title.replace(/"/g,'&quot;')}">
+    return `<a class="prod-chip${extra?' is-extra':''}" href="${p.slug}" data-name="${dataName}" title="${p.title.replace(/"/g,'&quot;')}">
       <h3>${p.name}</h3>
     </a>`;
   }
 
   function groupHTML(cat){
     const items = PRODUCTS.filter(p=>p.cat===cat.id);
+    const extraCount = Math.max(0, items.length - FAST_LIMIT);
+    const chips = items.map((p,i)=>chipHTML(p, i>=FAST_LIMIT)).join('');
     return `<section class="cat-group reveal" data-cat="${cat.id}" id="cat-${cat.id}">
       <div class="cat-card-head">
         <img class="cat-hero-img" src="${cat.img}" alt="${cat.alt}" loading="lazy" width="800" height="450" />
         <div class="cat-card-text">
           <h2>${cat.name}</h2>
           <p>${cat.meta}</p>
-          <span class="cg-count">${items.length} product${items.length===1?'':'s'}</span>
         </div>
       </div>
-      <div class="product-chip-grid">${items.map(chipHTML).join('')}</div>
+      <div class="product-chip-grid">${chips}</div>
+      ${extraCount>0?`<button type="button" class="cat-viewall-btn" data-cat="${cat.id}">View all ${items.length} products <span aria-hidden="true">→</span></button>`:''}
     </section>`;
   }
 
-  // build groups (exact spreadsheet order)
+  // build groups (exact spreadsheet order) — fast-moving items shown inline, rest available via popup
   wrap.innerHTML = CATS.map(groupHTML).join('');
+
+  // ===== "View all" popup (pop-out with close option) =====
+  const modalOverlay = document.getElementById('catModalOverlay');
+  const modalBox = document.getElementById('catModal');
+  const modalTitle = document.getElementById('catModalTitle');
+  const modalGrid = document.getElementById('catModalGrid');
+  const modalClose = document.getElementById('catModalClose');
+
+  function openCatModal(catId){
+    const cat = catOf(catId);
+    const items = PRODUCTS.filter(p=>p.cat===catId);
+    if(!cat || !modalOverlay) return;
+    modalTitle.textContent = cat.name + ' — full product list';
+    modalGrid.innerHTML = items.map(p=>chipHTML(p,false)).join('');
+    modalOverlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCatModal(){
+    if(!modalOverlay) return;
+    modalOverlay.hidden = true;
+    document.body.style.overflow = '';
+  }
+  wrap.addEventListener('click', e=>{
+    const btn = e.target.closest('.cat-viewall-btn');
+    if(btn){ e.preventDefault(); openCatModal(btn.dataset.cat); }
+  });
+  if(modalClose) modalClose.addEventListener('click', closeCatModal);
+  if(modalOverlay) modalOverlay.addEventListener('click', e=>{ if(e.target===modalOverlay) closeCatModal(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && modalOverlay && !modalOverlay.hidden) closeCatModal(); });
 
   // build filter chips
   const chips = [{id:'all',label:'All Categories',n:PRODUCTS.length}].concat(
@@ -1445,15 +1516,24 @@ const PRODUCTS = [{"cat": "engine-oils-lubricants-fluids", "name": "All Types of
 
   function applyView(){
     const q = (searchEl.value||'').trim().toLowerCase();
+    const searching = q.length > 0;
     let anyVisible = false;
     groups.forEach(g=>{
       const inCat = activeCat==='all' || g.dataset.cat===activeCat;
-      const catMatches = !q || g.querySelector('h2').textContent.toLowerCase().indexOf(q)!==-1;
+      const catNameMatches = searching && g.querySelector('h2').textContent.toLowerCase().indexOf(q)!==-1;
       let groupVisible = false;
       g.querySelectorAll('.prod-chip').forEach(card=>{
-        const match = inCat && (catMatches || card.dataset.name.indexOf(q)!==-1);
-        card.style.display = match ? '' : 'none';
-        if(match) groupVisible = true;
+        let show;
+        if(!inCat){
+          show = false;
+        } else if(searching){
+          // search reaches every product in the category, including the ones tucked behind "View all"
+          show = catNameMatches || card.dataset.name.indexOf(q)!==-1;
+        } else {
+          show = !card.classList.contains('is-extra');
+        }
+        card.style.display = show ? '' : 'none';
+        if(show) groupVisible = true;
       });
       g.style.display = groupVisible ? '' : 'none';
       if(groupVisible) anyVisible = true;
