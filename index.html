@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N6SNKZ4W');</script>
+  <!-- End Google Tag Manager -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MSY6WP98WK"></script>
   <script>
@@ -637,7 +644,7 @@
     .map-embed iframe { width:100%; height:100%; min-height:440px; border:none; display:block; }
 
     /* ============ FOOTER ============ */
-    footer { background:var(--ink); color:#9aa0a8; border-top:3px solid var(--red); padding:58px 0 0; font-family:'Inter'; }
+    footer { background:var(--ink); color:#9aa0a8; border-top:3px solid var(--red); padding:58px 0 32px; position:relative; font-family:'Inter'; }
     .foot-grid { display:grid; grid-template-columns:1.4fr 1fr 1.2fr; gap:46px; padding-bottom:42px; }
     .foot-brand { display:flex; align-items:center; gap:13px; margin-bottom:18px; }
     .foot-brand .ft-tile { width:50px; height:50px; border-radius:11px; background:#fff; padding:5px; display:flex; align-items:center; justify-content:center; }
@@ -657,24 +664,7 @@
     .foot-bot .fb-tags { color:#7b818a; }
 
     /* ============ FLOATING / FIXED ELEMENTS ============ */
-    .wa-float {
-      position:fixed; bottom:24px; right:24px; z-index:500; width:62px; height:62px; border-radius:50%;
-      background:var(--wa); display:flex; align-items:center; justify-content:center;
-      box-shadow:0 10px 30px rgba(37,211,102,.5); transition:transform .2s; animation:wa-pulse 2.6s infinite;
-    }
-    .wa-float svg { width:32px; height:32px; color:#fff; }
-    .wa-float:hover { transform:scale(1.09); }
-    @keyframes wa-pulse { 0%,100%{ box-shadow:0 10px 30px rgba(37,211,102,.5);} 50%{ box-shadow:0 10px 30px rgba(37,211,102,.5), 0 0 0 14px rgba(37,211,102,0);} }
-
-    .quote-tab {
-      position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:5;
-      writing-mode:vertical-rl; background:linear-gradient(180deg,var(--red),var(--orange)); color:#fff;
-      padding:18px 11px; border-radius:11px 0 0 11px; font-weight:800; font-size:.82rem; letter-spacing:.12em;
-      text-transform:uppercase; box-shadow:-8px 0 24px rgba(0,0,0,.22); display:flex; align-items:center; gap:10px;
-      transition:padding-right .2s ease;
-    }
-    .quote-tab svg { width:18px; height:18px; transform:rotate(0deg); }
-    .quote-tab:hover { padding-right:18px; }
+50%{ box-shadow:0 10px 30px rgba(37,211,102,.5), 0 0 0 14px rgba(37,211,102,0);} }
 
     /* ============ MOBILE DRAWER ============ */
     .drawer-mask { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:600; opacity:0; visibility:hidden; transition:.3s; backdrop-filter:blur(2px); }
@@ -761,7 +751,6 @@
       .cta-card { grid-column:span 2; }
       .hero-meta { gap:18px; }
       .safety-grid { grid-template-columns:repeat(3,1fr); }
-      .quote-tab { display:none; }
       .head-cta .btn-wa span { display:none; }
       .head-cta .btn-wa { padding:11px; }
       .utility .u-grp.hide-sm { display:none; }
@@ -793,10 +782,48 @@
       .pcard-ov .btn { transform:none; }
       .cat-controls { position:static; }
     }
-  </style>
+  
+  /* ── Real Plannet Attribution Badge ── */
+  .rp-badge {
+    position: absolute; bottom: 18px; right: 24px;
+    display: inline-flex; align-items: center; gap: 7px;
+    text-decoration: none; opacity: 0.65;
+    transition: opacity 0.2s;
+  }
+  .rp-badge:hover { opacity: 1; }
+  .rp-badge-orb {
+    width: 24px; height: 24px; flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.08);
+    animation: rpBreathe 3s ease-in-out infinite;
+    display: flex; align-items: center; justify-content: center;
+  }
+  @keyframes rpBreathe {
+    0%,100% { box-shadow: 0 0 6px rgba(201,168,76,0.3); }
+    50%      { box-shadow: 0 0 14px rgba(201,168,76,0.55); }
+  }
+  .rp-badge-orb svg { width: 15px; height: 15px; }
+  .rp-badge-text {
+    display: flex; flex-direction: column; line-height: 1;
+  }
+  .rp-badge-text span:first-child {
+    font-size: 6.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(245,244,240,0.4); font-family: 'DM Sans', sans-serif;
+  }
+  .rp-badge-text span:last-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 500; color: rgba(245,244,240,0.85); line-height: 1.1;
+  }
+  .rp-badge-text span:last-child em { color: #c9a84c; font-style: normal; }
+</style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6SNKZ4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- ============ TOP UTILITY BAR ============ -->
 <div class="utility">
@@ -1328,21 +1355,28 @@
     </div>
     <div class="foot-bot">
       <span>© 2026 Al Shola Auto Spare Parts LLC. All rights reserved.</span>
-      <span class="fb-tags"><a href="privacy.html" style="color:#9aa0a8;">Privacy</a> &nbsp;·&nbsp; <a href="terms.html" style="color:#9aa0a8;">Terms</a> &nbsp;·&nbsp; Toyota · Nissan · Mitsubishi · Honda · Hyundai · Kia Parts in Dubai, UAE</span>
+        <span class="fb-tags"><a href="privacy.html" style="color:#9aa0a8;">Privacy</a> &nbsp;·&nbsp; <a href="terms.html" style="color:#9aa0a8;">Terms</a> &nbsp;·&nbsp; Toyota · Nissan · Mitsubishi · Honda · Hyundai · Kia Parts in Dubai, UAE</span>
     </div>
     <p class="foot-seo">Al Shola Auto Spare Parts supplies brake pads Dubai, shock absorbers Dubai, engine oil UAE, AC compressor Dubai, alternator Nissan UAE, Toyota spare parts Dubai, Nissan parts UAE, Mitsubishi spare parts Dubai, Honda parts UAE, Hyundai Kia spare parts Dubai, auto parts exporter Africa, wholesale auto parts Dubai.</p>
   </div>
+  <!-- Real Plannet Attribution -->
+  <a href="https://realplannet.com" class="rp-badge" target="_blank" rel="noopener" title="Built by Real Plannet">
+    <div class="rp-badge-orb">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="rpBG" x1="20" y1="16" x2="44" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#e8c97a"/><stop offset="1" stop-color="#c9a84c"/></linearGradient></defs>
+        <ellipse cx="32" cy="33" rx="27" ry="9.5" transform="rotate(-20 32 33)" stroke="#c9a84c" stroke-width="1.4" opacity="0.45"/>
+        <circle cx="32" cy="30" r="13" fill="url(#rpBG)"/>
+        <path d="M5.5 38 A27 9.5 0 0 0 58.5 28" transform="rotate(-20 32 33)" stroke="#c9a84c" stroke-width="1.8" fill="none"/>
+      </svg>
+    </div>
+    <div class="rp-badge-text">
+      <span>Built by</span>
+      <span>Real <em>Plannet</em></span>
+    </div>
+  </a>
 </footer>
 
-<!-- ============ FIXED ELEMENTS ============ -->
-<a href="https://wa.me/971552403959?text=Hello%20Al%20Shola%2C%20I%20want%20a%20quote%20for%20a%20spare%20part." class="quote-tab" target="_blank" rel="noopener" aria-label="Request a quote on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
-  Request a Quote
-</a>
 
-<a href="https://wa.me/971552403959?text=Hello%20Al%20Shola%2C%20I%20need%20a%20spare%20part.%20My%20car%20is:" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp Al Shola Auto Spare Parts">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.06c-.25.69-1.43 1.32-1.97 1.4-.5.08-1.14.11-1.84-.12-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.83-4.2-4.98-4.4-.15-.2-1.19-1.58-1.19-3.01 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.77-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.25.59.84 2.03.91 2.18.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.71-.18 1.4Z"/></svg>
-</a>
 
 <!-- ============ MOBILE DRAWER ============ -->
 <div class="drawer-mask" id="drawerMask"></div>
@@ -1731,5 +1765,6 @@ const PRODUCTS = [{"cat": "engine-oils-lubricants-fluids", "name": "All Types of
   }
 })();
 </script>
+
 </body>
 </html>
