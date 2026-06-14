@@ -1766,5 +1766,55 @@ const PRODUCTS = [{"cat": "engine-oils-lubricants-fluids", "name": "All Types of
 })();
 </script>
 
+<!-- Real Plannet Attribution Orb -->
+<style>
+.rp-orb{position:fixed;bottom:20px;right:24px;cursor:pointer;text-decoration:none;z-index:9999;display:flex;align-items:center;justify-content:center}
+.rp-orb .orb-ring{position:relative;width:46px;height:46px;transition:transform .4s ease}
+.rp-orb:hover .orb-ring{transform:scale(1.1)}
+.rp-orb .orb-glow{position:absolute;inset:0;border-radius:50%;background:rgba(201,168,76,.07);animation:rpOrbBreathe 3s ease-in-out infinite}
+@keyframes rpOrbBreathe{0%,100%{transform:scale(1);box-shadow:0 0 14px rgba(201,168,76,.28),0 0 28px rgba(201,168,76,.1)}50%{transform:scale(1.08);box-shadow:0 0 26px rgba(201,168,76,.52),0 0 52px rgba(201,168,76,.2)}}
+.rp-orb .orb-ring-pulse{position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(201,168,76,.2);animation:rpOrbRingPulse 3s ease-in-out infinite}
+@keyframes rpOrbRingPulse{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.24);opacity:0}}
+.rp-orb .orb-mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.rp-orb .orb-mark svg{width:30px;height:30px}
+.rp-orb .orb-tooltip{position:absolute;bottom:calc(100% + 16px);right:50%;transform:translateX(50%) translateY(8px);opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;white-space:nowrap}
+.rp-orb:hover .orb-tooltip{opacity:1;transform:translateX(50%) translateY(0)}
+.rp-orb .rp-footer-bar{display:inline-flex;flex-direction:column;align-items:flex-start;background:#0d0c12;padding:10px 28px 16px;gap:6px}
+.rp-orb .rp-footer-built{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,244,240,.35);font-family:'DM Sans',sans-serif}
+.rp-orb .rp-footer-logo{display:flex;align-items:center;text-decoration:none}
+.rp-orb .rp-divider{width:1px;height:28px;background:rgba(201,168,76,.28);margin:0 14px}
+.rp-orb .rp-wordmark{font-family:'Cormorant Garamond',serif;font-size:26px;color:#f5f4f0;font-weight:500;line-height:1}
+.rp-orb .rp-wordmark em{color:#c9a84c;font-style:normal}
+</style>
+<a href="https://realplannet.com" class="rp-orb" target="_blank" rel="noopener" title="Built by Real Plannet">
+  <div class="orb-ring">
+    <div class="orb-glow"></div>
+    <div class="orb-ring-pulse"></div>
+    <div class="orb-mark">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="rpG" x1="20" y1="16" x2="44" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#e8c97a"/><stop offset="1" stop-color="#c9a84c"/></linearGradient></defs>
+        <ellipse cx="32" cy="33" rx="27" ry="9.5" transform="rotate(-20 32 33)" stroke="#c9a84c" stroke-width="1.4" opacity="0.45"/>
+        <circle cx="32" cy="30" r="13" fill="url(#rpG)"/>
+        <path d="M5.5 38 A27 9.5 0 0 0 58.5 28" transform="rotate(-20 32 33)" stroke="#c9a84c" stroke-width="1.8" fill="none"/>
+      </svg>
+    </div>
+  </div>
+  <div class="orb-tooltip">
+    <div class="rp-footer-bar">
+      <div class="rp-footer-built">Built by</div>
+      <div class="rp-footer-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="44" height="44" fill="none">
+          <defs><linearGradient id="rpG2" x1="20" y1="16" x2="44" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#e8c97a"/><stop offset="1" stop-color="#c9a84c"/></linearGradient></defs>
+          <ellipse cx="32" cy="33" rx="27" ry="9.5" transform="rotate(-20 32 33)" stroke="#c9a84c" stroke-width="1.4" opacity="0.45"/>
+          <circle cx="32" cy="30" r="13" fill="url(#rpG2)"/>
+          <path d="M5.5 38 A27 9.5 0 0 0 58.5 28" transform="rotate(-20 32 33)" stroke="#c9a84c" stroke-width="1.8" fill="none"/>
+        </svg>
+        <div class="rp-divider"></div>
+        <span class="rp-wordmark">Real <em>Plannet</em></span>
+      </div>
+    </div>
+  </div>
+</a>
+
 </body>
 </html>
