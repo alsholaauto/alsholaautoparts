@@ -673,9 +673,27 @@ const cleanVin = v=>v.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g,'').slice(0,17);
 const fmtVin   = v=>v?[v.slice(0,3),v.slice(3,9),v.slice(9,17)].filter(Boolean).join(' · '):'';
 
 function extractVin(raw){
-  const fixed=raw.toUpperCase().replace(/O/g,'0').replace(/I/g,'1').replace(/Q/g,'0');
-  const m=fixed.match(/[A-HJ-NPR-Z0-9]{17}/g);
-  return m?m[0]:null;
+  const fixed=raw.toUpperCase()
+    .replace(/О/g,'0')   // Cyrillic O lookalike
+    .replace(/\bO\b/g,'0')
+    .replace(/Q/g,'0');
+
+  // 1. Look for explicit "Chassis No" / "رقم القاعدة" label first
+  const chassisLabel=/(?:CHASSIS\s*NO\.?\s*[:\-]?\s*|رقم\s*القاعدة\s*)([A-HJ-NPR-Z0-9I]{15,18})/i;
+  const lm=fixed.match(chassisLabel);
+  if(lm){
+    const cand=lm[1].replace(/I/g,'1').replace(/O/g,'0').replace(/Q/g,'0');
+    const vm=cand.match(/[A-HJ-NPR-Z0-9]{17}/);
+    if(vm) return vm[0];
+  }
+
+  // 2. Fall back: collect ALL 17-char candidates, return LAST one
+  // (on UAE Mulkiya, Chassis No is always below Engine No)
+  const cleaned=fixed.replace(/I/g,'1').replace(/O/g,'0').replace(/Q/g,'0');
+  const all=cleaned.match(/[A-HJ-NPR-Z0-9]{17}/g);
+  if(all&&all.length>0) return all[all.length-1];
+
+  return null;
 }
 
 function makeVCard(){
