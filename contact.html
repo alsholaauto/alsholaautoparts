@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
@@ -582,7 +585,7 @@ const RED='#C8281A', ORANGE='#F47321', WA_GREEN='#25D366', WA_DK='#1da851';
 const PHONE_WA='+971552403959', PHONE_LN='+97143553028';
 const EMAIL_ADR='alsholaautosp@gmail.com';
 const MAPS_URL='https://maps.google.com/?q=25.2854,55.3753';
-const WEB_URL='https://alshola.com';
+const WEB_URL='https://alsholaauto.com';
 
 const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{"theme":"dark","accent":"#F47321"}/*EDITMODE-END*/;
 
@@ -848,7 +851,7 @@ function App(){
     {icon:<IPhone/>, lbl:TX.c_land,   val:'(04) 553 0280',                       href:`tel:${PHONE_LN}`,    ac:accent},
     {icon:<IWA/>,    lbl:TX.c_wa,     val:'+971 55 240 3959',                    href:`https://wa.me/${PHONE_WA.replace('+','')}`, ac:WA_GREEN},
     {icon:<IMail/>,  lbl:TX.c_email,  val:EMAIL_ADR,                             href:`mailto:${EMAIL_ADR}`,ac:accent},
-    {icon:<IGlobe/>, lbl:TX.c_web,    val:'www.alshola.com',                     href:WEB_URL,              ac:accent},
+    {icon:<IGlobe/>, lbl:TX.c_web,    val:'www.alsholaauto.com',                   href:WEB_URL,              ac:accent},
     {icon:<IPin/>,   lbl:TX.c_addr,   val:TX.c_addrVal,                          href:MAPS_URL,             ac:'#E74C3C'},
   ];
 
@@ -870,7 +873,9 @@ function App(){
 
       {/* ── HEADER ── */}
       <div style={{...px,paddingTop:26,display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-        <img src={logoSrc} alt="Al Shola" style={{height:32,width:'auto',display:'block'}}/>
+        <a href="https://alsholaauto.com" target="_blank" rel="noopener noreferrer" style={{display:'block',lineHeight:0}}>
+          <img src={logoSrc} alt="Al Shola" style={{height:32,width:'auto',display:'block'}}/>
+        </a>
         {/* Language toggle */}
         <div style={{display:'flex',gap:4,background:dark?'rgba(255,255,255,.09)':'#e8eaee',borderRadius:10,padding:3}}>
           {['en','ar'].map(l=>(
@@ -891,9 +896,11 @@ function App(){
 
       {/* ── HERO ── */}
       <div style={{...px,...mt(18)}}>
-        <h1 style={{fontFamily:ar?TX.font:"'Barlow Condensed',sans-serif",fontWeight:900,fontSize:ar?28:30,lineHeight:1.1,textTransform:ar?'none':'uppercase',letterSpacing:'.01em',marginBottom:6}}>
-          {TX.heroTitle1}<br/><span style={{color:accent}}>{TX.heroTitle2}</span>
-        </h1>
+        <a href="https://alsholaauto.com" target="_blank" rel="noopener noreferrer" style={{textDecoration:'none',color:'inherit'}}>
+          <h1 style={{fontFamily:ar?TX.font:"'Barlow Condensed',sans-serif",fontWeight:900,fontSize:ar?28:30,lineHeight:1.1,textTransform:ar?'none':'uppercase',letterSpacing:'.01em',marginBottom:6}}>
+            {TX.heroTitle1}<br/><span style={{color:accent}}>{TX.heroTitle2}</span>
+          </h1>
+        </a>
         <p style={{fontSize:12.5,color:muted,lineHeight:1.55}}>{TX.heroSub}</p>
       </div>
 
